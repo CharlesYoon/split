@@ -15,6 +15,7 @@ target 'split' do
   
   pod 'Gloss', '~> 1.2'
   pod 'RealmSwift'
+  pod 'SwiftyJSONRealmObject'
 
 
 end

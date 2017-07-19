@@ -44,6 +44,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSONRealmObject.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,12 +67,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1CE325820763C2BEFD666142C17EE013</key>
+		<key>1642E27EB5D5EA6C714EA0874FFFB73C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F2AC2E553F094CE63881927F5A61D4A</key>
+		<key>171ACD86ED21B35A5302A5B85AD5391E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,12 +82,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<key>4EB3A15D0241CE4681DDB43763AE3CD6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9B5B7901634C451D1AF94C899D1965B2</key>
+		<key>67BE68B7BCED470918626AF16510F9E9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -88,6 +103,11 @@
 			<true/>
 		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C3A1DD18B486F2F4609CB8B5B8857414</key>
 		<dict>
 			<key>primary</key>
 			<true/>

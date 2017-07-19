@@ -49,6 +49,10 @@ PODS:
   - Realm/Headers (2.8.3)
   - RealmSwift (2.8.3):
     - Realm (= 2.8.3)
+  - SwiftyJSON (3.1.4)
+  - SwiftyJSONRealmObject (1.0.0):
+    - RealmSwift
+    - SwiftyJSON
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
@@ -58,6 +62,7 @@ DEPENDENCIES:
   - FirebaseAuth
   - Gloss (~> 1.2)
   - RealmSwift
+  - SwiftyJSONRealmObject
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
@@ -74,7 +79,9 @@ SPEC CHECKSUMS:
   nanopb: 22bc080fa3955e2116b6ff3ee6c2cb3c15ab97cb
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwiftyJSONRealmObject: ab791e57876b1e0041463291b97a378e90a3fa9f
 
-PODFILE CHECKSUM: 54becc95f21bb0642d9b7b5244a4791fac013678
+PODFILE CHECKSUM: ec26f803352d8bcad78f3be1ff8fdecfcfb82c2a
 
 COCOAPODS: 1.2.1

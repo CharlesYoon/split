@@ -9,6 +9,9 @@
 import Foundation
 import Realm
 import RealmSwift
+import SwiftyJSON
+import SwiftyJSONRealmObject
+
 
 class GuestDTO: Object{
     dynamic var name: String?
@@ -53,6 +56,24 @@ class GuestDTO: Object{
         self.items = []
         super.init()
     }
+    
+    //jsonify from Realm
+    required init?(json: JSON) {
+        self.name = json["name"].stringValue
+        self.guestID = json["guestID"].stringValue
+        self.venmoName = json["venmoName"].stringValue
+        //self.profPicURL = "profPicURL" <~~ json
+        self.paymentComplete = json["paymentComplete"].boolValue
+        self.mealTotal = json["mealTotal"].doubleValue
+        self.items = []
+        super.init()
+    }
+    
+    func toJSON() -> JSON? {
+        let jsonified = ["name": self.name, "venmoName": self.venmoName, "profPicURL": self.profPicURL, "paymentComplete": self.paymentComplete, "mealTotal": self.mealTotal] as JSON
+        return jsonified
+    }
+    
     
     required init(value: Any, schema: RLMSchema) {
         fatalError("init(value:schema:) has not been implemented")

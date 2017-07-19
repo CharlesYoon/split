@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Realm
+import RealmSwift
 import Alamofire
 import AlamofireImage
 
@@ -151,9 +153,17 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
     func resetGuestMealTotal(guest: Guest?) {
         
         //add Realm here
+        // deletes the original item prior to being updated and added back below
+        // adds back the item with an updated count
+        
+        let realm = try! Realm()
+        
+        try! realm.write {
+            realm.create(GuestDTO.self, value: ["mealTotal": guest?.mealTotal], update: false)
+        }
         
         
-        
+        //Firebase portion
         let guestURL = "https://split2-62ca2.firebaseio.com/guests/\((guest?.guestID)!).json"
         
         Alamofire.request(guestURL, method: .put, parameters: guest?.toJSON(), encoding: JSONEncoding.default).responseJSON(completionHandler: {response in
@@ -166,8 +176,6 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
                 
                 //                self.delegate?.didAddActivity(activity: activityDto!)
                 //self.dismiss(animated: true, completion: nil)
-                
-                
                 break
             case .failure:
                 // TODO: Display an error dialog

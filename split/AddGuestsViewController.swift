@@ -207,6 +207,11 @@ class AddGuestsViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     func postActivity(guest: Guest?) {
+        //add Realm here
+        
+        
+        
+        //fireBase Here
         Alamofire.request("https://split2-62ca2.firebaseio.com/guests.json", method: .post, parameters: guest?.toJSON(), encoding: JSONEncoding.default).responseJSON(completionHandler: {response in
             
             switch response.result {
