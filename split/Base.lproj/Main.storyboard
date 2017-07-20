@@ -38,9 +38,6 @@
                                 <state key="normal" title="Scan New Bill">
                                     <color key="titleColor" red="0.96862745100000003" green="0.80784313730000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="scanImageButtonTapped:" destination="EAq-9J-EII" eventType="touchUpInside" id="pfa-NV-Tdp"/>
-                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo1" translatesAutoresizingMaskIntoConstraints="NO" id="g8W-y2-bR7">
                                 <rect key="frame" x="99" y="91" width="150" height="150"/>
