@@ -71,13 +71,14 @@
                         <outlet property="imageView" destination="CMW-LT-fU7" id="rgV-wj-Xdm"/>
                         <outlet property="scanButton" destination="bWO-0J-0gf" id="qmF-fl-k80"/>
                         <outlet property="splitLogo" destination="Yv5-9G-ZSU" id="GSB-wR-vr4"/>
+                        <segue destination="dVk-l7-7UG" kind="show" identifier="navToScan" animates="NO" id="58N-8A-mjJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1056.8" y="122.78860569715144"/>
         </scene>
-        <!--Scan Bill-->
+        <!--Scanning...-->
         <scene sceneID="HN9-9K-HFA">
             <objects>
                 <viewController id="dVk-l7-7UG" customClass="ScanViewController" customModule="split" customModuleProvider="target" sceneMemberID="viewController">
@@ -89,52 +90,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="receipt1" translatesAutoresizingMaskIntoConstraints="NO" id="GUo-br-lAY">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XjU-54-fEe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="receipt1Scanned" translatesAutoresizingMaskIntoConstraints="NO" id="rTX-0y-jn3">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmp-gH-g1W">
-                                <rect key="frame" x="72" y="578" width="231" height="55"/>
-                                <color key="backgroundColor" red="0.1019607843" green="0.16078431369999999" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="SCAN">
-                                    <color key="titleColor" red="0.96862745100000003" green="0.80784313730000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="scanReceipt:" destination="dVk-l7-7UG" eventType="touchUpInside" id="siU-mR-xmj"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0F-uu-yRm" customClass="DSGradientProgressView" customModule="DSGradientProgressView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="6"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="rTX-0y-jn3" secondAttribute="trailing" id="03K-0k-iXl"/>
-                            <constraint firstItem="bmp-gH-g1W" firstAttribute="top" secondItem="rTX-0y-jn3" secondAttribute="bottom" constant="-89" id="BrK-XR-r5R"/>
-                            <constraint firstItem="bmp-gH-g1W" firstAttribute="leading" secondItem="nf6-B5-f9o" secondAttribute="leadingMargin" constant="56" id="Chs-5o-AoM"/>
-                            <constraint firstItem="GUo-br-lAY" firstAttribute="top" secondItem="PIN-0f-ugd" secondAttribute="bottom" id="FGb-JP-P68"/>
-                            <constraint firstItem="rTX-0y-jn3" firstAttribute="trailing" secondItem="GUo-br-lAY" secondAttribute="trailing" id="Fa9-2Q-ZmA"/>
-                            <constraint firstItem="bmp-gH-g1W" firstAttribute="top" secondItem="PIN-0f-ugd" secondAttribute="bottom" constant="514" id="KEM-gW-bVE"/>
-                            <constraint firstItem="rTX-0y-jn3" firstAttribute="bottom" secondItem="Wjt-dc-rj2" secondAttribute="top" id="V2a-vB-XG2"/>
-                            <constraint firstItem="Wjt-dc-rj2" firstAttribute="top" secondItem="bmp-gH-g1W" secondAttribute="bottom" constant="34" id="Xjq-Av-9UA"/>
-                            <constraint firstItem="GUo-br-lAY" firstAttribute="centerX" secondItem="bmp-gH-g1W" secondAttribute="centerX" id="ZQ1-dE-gBB"/>
-                            <constraint firstItem="rTX-0y-jn3" firstAttribute="leading" secondItem="nf6-B5-f9o" secondAttribute="leading" id="ics-68-vCn"/>
-                            <constraint firstItem="GUo-br-lAY" firstAttribute="bottom" secondItem="Wjt-dc-rj2" secondAttribute="top" id="nBq-oj-f4Y"/>
-                            <constraint firstItem="rTX-0y-jn3" firstAttribute="top" secondItem="GUo-br-lAY" secondAttribute="top" id="oM1-Vz-Yde"/>
-                            <constraint firstItem="GUo-br-lAY" firstAttribute="leading" secondItem="rTX-0y-jn3" secondAttribute="leading" id="swH-zE-0eh"/>
+                            <constraint firstItem="XjU-54-fEe" firstAttribute="bottom" secondItem="Wjt-dc-rj2" secondAttribute="top" id="3uh-e7-hXg"/>
+                            <constraint firstItem="XjU-54-fEe" firstAttribute="trailing" secondItem="d0F-uu-yRm" secondAttribute="trailing" id="8mb-VU-WyV"/>
+                            <constraint firstAttribute="trailing" secondItem="XjU-54-fEe" secondAttribute="trailing" id="Hqr-W4-zWj"/>
+                            <constraint firstItem="XjU-54-fEe" firstAttribute="leading" secondItem="d0F-uu-yRm" secondAttribute="leading" id="OMr-ko-qyC"/>
+                            <constraint firstItem="XjU-54-fEe" firstAttribute="top" secondItem="nf6-B5-f9o" secondAttribute="top" id="RQ3-pT-mbX"/>
+                            <constraint firstItem="Wjt-dc-rj2" firstAttribute="top" secondItem="d0F-uu-yRm" secondAttribute="bottom" constant="597" id="WUP-Xg-htc"/>
+                            <constraint firstItem="XjU-54-fEe" firstAttribute="top" secondItem="d0F-uu-yRm" secondAttribute="bottom" constant="-70" id="XKs-cZ-pMJ"/>
+                            <constraint firstItem="XjU-54-fEe" firstAttribute="leading" secondItem="nf6-B5-f9o" secondAttribute="leading" id="oAk-Mv-2Ng"/>
+                            <constraint firstItem="d0F-uu-yRm" firstAttribute="top" secondItem="PIN-0f-ugd" secondAttribute="bottom" id="v8X-kg-XAq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Scan Bill" id="qRF-jv-JZ5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="g0e-qG-LJC">
+                    <navigationItem key="navigationItem" title="Scanning..." id="qRF-jv-JZ5">
+                        <barButtonItem key="leftBarButtonItem" title="Re-Scan" id="FYq-tP-YKU">
                             <connections>
-                                <action selector="scanFinished:" destination="dVk-l7-7UG" id="X0D-Bm-IwC"/>
+                                <action selector="rescanButton:" destination="dVk-l7-7UG" id="fmI-FK-mqY"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="receiptRaw" destination="GUo-br-lAY" id="foL-bk-yGS"/>
-                        <outlet property="receiptScanned" destination="rTX-0y-jn3" id="iGH-VJ-HZE"/>
-                        <outlet property="scanButton" destination="bmp-gH-g1W" id="BQM-z3-eYT"/>
+                        <outlet property="progressView" destination="d0F-uu-yRm" id="1dr-Iv-SpQ"/>
+                        <outlet property="receiptImageView" destination="XjU-54-fEe" id="8AN-si-qMO"/>
+                        <outlet property="rescanUIButton" destination="FYq-tP-YKU" id="cFs-Ay-I1f"/>
                         <segue destination="b9W-uR-P22" kind="show" identifier="navToGuests" id="5vQ-wB-7zx"/>
                     </connections>
                 </viewController>
@@ -296,7 +283,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sXY-bT-jOb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3774" y="1573"/>
+            <point key="canvasLocation" x="3772" y="1827"/>
         </scene>
         <!--Profile-->
         <scene sceneID="aTe-Gp-fmj">
@@ -632,7 +619,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oms-Af-K3x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2894" y="1492"/>
+            <point key="canvasLocation" x="2894" y="1827"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OpY-Z5-Kng">
@@ -707,7 +694,7 @@
                                 </prototypes>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gK5-c7-dVO">
-                                <rect key="frame" x="136" y="20" width="239" height="647"/>
+                                <rect key="frame" x="136" y="64" width="239" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="59" id="a9t-ZS-l5e" customClass="ItemTableViewCell" customModule="split" customModuleProvider="target">
@@ -908,7 +895,5 @@
     <resources>
         <image name="BTprofPic" width="699" height="657"/>
         <image name="ic_menu" width="24" height="24"/>
-        <image name="receipt1" width="360" height="450"/>
-        <image name="receipt1Scanned" width="724" height="908"/>
     </resources>
 </document>

@@ -173,10 +173,10 @@ class HomeViewController: UIViewController, RescanDelegate, UIImagePickerControl
         if segue.identifier == "navToScan" {
             let scanVC = segue.destination as! ScanViewController
             
-//            scanVC.allBlocks = self.allBlocks
-//            scanVC.receiptImage = self.imageView.image
-//            scanVC.scanningComplete = self.scanningComplete
-//            scanVC.delegate = self
+            scanVC.allBlocks = self.allBlocks
+            scanVC.receiptImage = self.imageView.image
+            scanVC.scanningComplete = self.scanningComplete
+            scanVC.delegate = self
             
         }
     }
