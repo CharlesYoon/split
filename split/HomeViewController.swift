@@ -144,9 +144,9 @@ class HomeViewController: UIViewController, RescanDelegate, UIImagePickerControl
     var allBlocks: [Block] = []
     var scanningComplete: Bool? = false
     
-    @IBOutlet weak var splitLogo: UILabel!
-    @IBOutlet weak var scanButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var splitLogo: UIImageView!
+    @IBOutlet weak var scanButton: UIButton!
     
     
     
@@ -162,6 +162,11 @@ class HomeViewController: UIViewController, RescanDelegate, UIImagePickerControl
 //        priceTextView.isHidden = true
 //        itemTextView.isHidden = true
 //        spinner.hidesWhenStopped = true
+        
+        scanButton.layer.borderColor = UIColor(hex: "F7CE3E").cgColor
+        scanButton.layer.borderWidth = 0.5
+        scanButton.layer.cornerRadius = 5
+        
     }
     
     override func didReceiveMemoryWarning() {
