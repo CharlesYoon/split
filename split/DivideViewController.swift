@@ -143,6 +143,16 @@ class DivideViewController: UIViewController, ItemGuestsDelegate {
     
     func updateItemData(item: Item?) {
         
+        //Realm
+        let realm = try! Realm()
+        try! realm.write(){
+            print("Updating Items")
+            let newItems = ItemDTO.init(name: item?.name, price: item?.price)
+            realm.add(newItems)
+            self.itemsTableView.reloadData()
+        }
+    
+        //firebase
         var itemURL: String = "https://split2-62ca2.firebaseio.com/items/"
         itemURL += (item?.itemID)! + ".json"
         
@@ -173,6 +183,10 @@ class DivideViewController: UIViewController, ItemGuestsDelegate {
     
     
     func getItems() {
+        //Realm
+        
+        
+        //Firebase
         Alamofire.request("https://split2-62ca2.firebaseio.com/items.json").responseJSON(completionHandler: {
             response in
             print("IMPORTING ITEMS")
@@ -200,6 +214,12 @@ class DivideViewController: UIViewController, ItemGuestsDelegate {
     }
     
     func getGuests() {
+        //Realm
+        var gettingGuests = try! Realm().objects(GuestDTO)
+        
+        
+        
+        //FireBase
         Alamofire.request("https://split2-62ca2.firebaseio.com/guests.json").responseJSON(completionHandler: {
             response in
             print("IMPORTING GUESTS")
@@ -227,7 +247,6 @@ class DivideViewController: UIViewController, ItemGuestsDelegate {
                             self.guestsTableView.reloadData()
                         })
 
-                        
                         self.guestsDataSource?.guests.append(guest)
                         self.guestsTableView.delegate = self.guestsDataSource
                         self.guestsTableView.dataSource = self.guestsDataSource

@@ -30,9 +30,13 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         //add the Realm DataBase
         
+        
+        
+        
+        
+        //fireBase portion
         Alamofire.request("https://split2-62ca2.firebaseio.com/guests.json").responseJSON(completionHandler: {
             response in
             //print(response.result.value)
