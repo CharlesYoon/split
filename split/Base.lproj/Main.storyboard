@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2Q1-Gv-UGk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2Q1-Gv-UGk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,8 +36,7 @@
                                     <color key="titleColor" red="0.96862745100000003" green="0.80784313730000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="openCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HO3-1V-em0"/>
-                                    <segue destination="dVk-l7-7UG" kind="show" identifier="noCameraSegue" id="ryd-Pg-DIU"/>
+                                    <action selector="scanImageButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Aky-sX-s4j"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPLIT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yv5-9G-ZSU">
@@ -69,9 +68,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cameraImageView" destination="CMW-LT-fU7" id="49i-pf-W8X"/>
-                        <outlet property="scanButton" destination="bWO-0J-0gf" id="f1v-Ry-igr"/>
-                        <outlet property="splitLogo" destination="Yv5-9G-ZSU" id="tFS-WN-9Ip"/>
+                        <outlet property="imageView" destination="CMW-LT-fU7" id="rgV-wj-Xdm"/>
+                        <outlet property="scanButton" destination="bWO-0J-0gf" id="qmF-fl-k80"/>
+                        <outlet property="splitLogo" destination="Yv5-9G-ZSU" id="GSB-wR-vr4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -708,7 +707,7 @@
                                 </prototypes>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gK5-c7-dVO">
-                                <rect key="frame" x="136" y="64" width="239" height="603"/>
+                                <rect key="frame" x="136" y="20" width="239" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="59" id="a9t-ZS-l5e" customClass="ItemTableViewCell" customModule="split" customModuleProvider="target">

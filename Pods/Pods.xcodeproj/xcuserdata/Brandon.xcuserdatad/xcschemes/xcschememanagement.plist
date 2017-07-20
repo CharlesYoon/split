@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DSGradientProgressView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,27 +72,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1642E27EB5D5EA6C714EA0874FFFB73C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>171ACD86ED21B35A5302A5B85AD5391E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>40E7477AD67135868F5FB08136602674</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4EB3A15D0241CE4681DDB43763AE3CD6</key>
+		<key>55EBA87E77CF659FD98839E17765C2AF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>67BE68B7BCED470918626AF16510F9E9</key>
+		<key>6AFCB1E49B9612EA7D1E505A9FC0CA42</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,17 +97,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A03854F5B49720AE08DF4C1998AE649C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C3A1DD18B486F2F4609CB8B5B8857414</key>
+		<key>C602128A0604EA9362BD9789327EB14D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D3D5FAAA045E0DAE172DDCB6995662F5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>E4DD95323C54A78F879DAB0F1508B8E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F13DA0F262786773717D90E9B6402B87</key>
 		<dict>
 			<key>primary</key>
 			<true/>

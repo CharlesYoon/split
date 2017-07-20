@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.5.0)
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
+  - DSGradientProgressView (1.0.0)
   - Firebase (4.0.4):
     - Firebase/Core (= 4.0.4)
   - Firebase/Core (4.0.4):
@@ -57,6 +58,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - AlamofireImage (~> 3.1)
+  - DSGradientProgressView
   - Firebase
   - Firebase/Storage
   - FirebaseAuth
@@ -67,6 +69,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
+  DSGradientProgressView: b591b4dfc6a7491fbd1f8dedee7a6ce02b23640f
   Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
@@ -82,6 +85,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyJSONRealmObject: ab791e57876b1e0041463291b97a378e90a3fa9f
 
-PODFILE CHECKSUM: ec26f803352d8bcad78f3be1ff8fdecfcfb82c2a
+PODFILE CHECKSUM: ab6e32f89df2046405f2bad4febd543dd39d8df7
 
 COCOAPODS: 1.2.1

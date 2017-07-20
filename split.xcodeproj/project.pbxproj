@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6DC5BB6C1F1FAD1E00C6F255 /* GuestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC5BB6B1F1FAD1E00C6F255 /* GuestDTO.swift */; };
 		A621618F048C7447AC7B1758 /* Pods_split.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8DA69C08C196CBCB73F003 /* Pods_split.framework */; };
+		CA1CA68D1F20E3C1004EF236 /* RescanDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1CA68C1F20E3C1004EF236 /* RescanDelegate.swift */; };
 		CA3B31821F151D27005AAB8B /* ItemGuestsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B31811F151D27005AAB8B /* ItemGuestsTableViewCell.swift */; };
 		CA3B31841F151EEE005AAB8B /* DivideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B31831F151EEE005AAB8B /* DivideViewController.swift */; };
 		CA3B31861F1527A7005AAB8B /* ItemsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B31851F1527A7005AAB8B /* ItemsDataSource.swift */; };
@@ -41,6 +42,7 @@
 		6DC5BB6B1F1FAD1E00C6F255 /* GuestDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestDTO.swift; sourceTree = "<group>"; };
 		75CB84696E7EF83743F4D9AE /* Pods-split.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-split.release.xcconfig"; path = "Pods/Target Support Files/Pods-split/Pods-split.release.xcconfig"; sourceTree = "<group>"; };
 		AA8DA69C08C196CBCB73F003 /* Pods_split.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_split.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA1CA68C1F20E3C1004EF236 /* RescanDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RescanDelegate.swift; sourceTree = "<group>"; };
 		CA3B31811F151D27005AAB8B /* ItemGuestsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemGuestsTableViewCell.swift; sourceTree = "<group>"; };
 		CA3B31831F151EEE005AAB8B /* DivideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivideViewController.swift; sourceTree = "<group>"; };
 		CA3B31851F1527A7005AAB8B /* ItemsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsDataSource.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				CA7E673D1F139FA500933DED /* HomeViewController.swift */,
 				CA7E674F1F141BC700933DED /* ProfileTableViewController.swift */,
+				CA1CA68C1F20E3C1004EF236 /* RescanDelegate.swift */,
 			);
 			name = Home/Profile;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				CA7E673E1F139FA500933DED /* HomeViewController.swift in Sources */,
 				CA7E67541F14220B00933DED /* GuestsTableViewCell.swift in Sources */,
 				CA7E67561F14223000933DED /* GuestsTableViewController.swift in Sources */,
+				CA1CA68D1F20E3C1004EF236 /* RescanDelegate.swift in Sources */,
 				CA3B31881F1527B4005AAB8B /* GuestsDataSource.swift in Sources */,
 				CA3B319C1F161C99005AAB8B /* Item.swift in Sources */,
 				CA3B31901F15724F005AAB8B /* Guest.swift in Sources */,
