@@ -34,9 +34,17 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
         //add the Realm DataBase
         //adding Guests to the database
         //MARK: ERROR
+        //request all the guest's photo urls as well as ids
         
-        
-        
+        let tableGuests = try! Realm().objects(GuestDTO.self)
+        self.secondGuests = []
+        for tableGuest in tableGuests{
+            let guest = GuestDTO()
+            guest.profPicImage = tableGuest.profPicImage
+            self.secondGuests.append(guest)
+            self.tableView.reloadData()
+        }
+    
         //fireBase portion
         Alamofire.request("https://split2-62ca2.firebaseio.com/guests.json").responseJSON(completionHandler: {
             response in
@@ -52,19 +60,6 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
                     
                     if let singleGuestDictionary = value as? [String: AnyObject] {
                         let guest = Guest(dictionary: singleGuestDictionary, key: key)
-                        
-                        //                        Alamofire.request(guest.profPicURL!).responseImage { response in
-                        //                            debugPrint(response)
-                        //
-                        //                            print(response.request)
-                        //                            print(response.response)
-                        //                            debugPrint(response.result)
-                        //
-                        //                            if let image = response.result.value {
-                        //                                print("image downloaded: \(image)")
-                        //                            }
-                        //                        }
-                        
                         
                         // have to add the pictures here
                         

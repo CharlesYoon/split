@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftyJSON
+import RealmSwift
+import Realm
 import DSGradientProgressView
 
 
@@ -158,6 +160,7 @@ class HomeViewController: UIViewController, RescanDelegate, UIImagePickerControl
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         imagePicker.delegate = self
 //        priceTextView.isHidden = true
 //        itemTextView.isHidden = true
