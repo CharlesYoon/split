@@ -22,6 +22,7 @@ class GuestDTO: Object{
     dynamic var paymentComplete: Bool
     dynamic var mealTotal: Double = 0.0
     var items: [Item]?
+
     
     init(name: String?, venmoName: String?, profPicURL: String?) {
         self.name = name
@@ -84,7 +85,14 @@ class GuestDTO: Object{
     }
     
     required init() {
-        fatalError("init() has not been implemented")
+        self.name = ""
+        self.guestID = ""
+        self.venmoName = ""
+        self.profPicURL = ""
+        self.paymentComplete = false
+        self.mealTotal = 0.0
+        self.items = []
+        super.init()
     }
 
 }

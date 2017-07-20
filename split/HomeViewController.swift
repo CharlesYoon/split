@@ -199,10 +199,15 @@ class HomeViewController: UIViewController, RescanDelegate, UIImagePickerControl
         
         //if camera is available, take photo, if not, use photo library
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            
+            
+            
             imagePicker.allowsEditing = false
             imagePicker.sourceType = .camera
             imagePicker.cameraCaptureMode = .photo
             imagePicker.modalPresentationStyle = .fullScreen
+            
+            
             present(imagePicker,animated: true,completion: nil)
         } else {
             imagePicker.allowsEditing = false

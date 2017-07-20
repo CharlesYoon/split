@@ -146,6 +146,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="A6e-cp-QTe">
+                            <rect key="frame" x="0.0" y="89" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="guestCell" rowHeight="61" id="vQc-1w-9pi" customClass="GuestsTableViewCell" customModule="split" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="61"/>
@@ -215,6 +219,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="imageView" destination="A6e-cp-QTe" id="eBB-GD-aql"/>
                         <segue destination="3Pd-oY-77R" kind="show" identifier="navToDivide" id="Tah-C0-tHu"/>
                     </connections>
                 </tableViewController>

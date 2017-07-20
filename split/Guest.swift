@@ -32,6 +32,15 @@ class Guest{
         self.items = []
     }
     
+    init(profPicImage: UIImage?) {
+        self.name = ""
+        self.venmoName = ""
+        self.profPicImage = profPicImage
+        self.paymentComplete = false
+        self.mealTotal = 0.0
+        self.items = []
+    }
+    
     init(name: String?, venmoName: String?, profPicURL: String?) {
         self.name = name
         self.venmoName = venmoName

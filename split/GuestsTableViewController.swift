@@ -12,10 +12,14 @@ import RealmSwift
 import Alamofire
 import AlamofireImage
 
-class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
+class GuestsTableViewController: UITableViewController, AddGuestsDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @IBOutlet weak var imageView: UIImageView!
     
     var guests: [Guest] = []
     var secondGuests: [GuestDTO] = []
+    
+    let picker = UIImagePickerController()
     
     @IBAction func doneButton(_ sender: Any) {
         
@@ -31,65 +35,64 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        picker.delegate = self
+        
+        openCamera()
+
         //add the Realm DataBase
         //adding Guests to the database
         //MARK: ERROR
         //request all the guest's photo urls as well as ids
         
-        let tableGuests = try! Realm().objects(GuestDTO.self)
-        self.secondGuests = []
-        for tableGuest in tableGuests{
-            let guest = GuestDTO()
-            guest.profPicImage = tableGuest.profPicImage
-            self.secondGuests.append(guest)
-            self.tableView.reloadData()
-        }
+//        let tableGuests = try! Realm().objects(GuestDTO.self)
+//        self.secondGuests = []
+//        for tableGuest in tableGuests{
+//            let guest = GuestDTO()
+//            guest.profPicImage = tableGuest.profPicImage
+//            self.secondGuests.append(guest)
+//            self.tableView.reloadData()
+//        }
     
         //fireBase portion
-        Alamofire.request("https://split2-62ca2.firebaseio.com/guests.json").responseJSON(completionHandler: {
-            response in
-            //print(response.result.value)
-            
-            if let guestDictionary = response.result.value as? [String: AnyObject] {
-                
-                self.guests = []
-                
-                for (key, value) in guestDictionary {
-                    print("Key: \(key)")
-                    print("Value: \(value)")
-                    
-                    if let singleGuestDictionary = value as? [String: AnyObject] {
-                        let guest = Guest(dictionary: singleGuestDictionary, key: key)
-                        
-                        // have to add the pictures here
-                        
-                        Alamofire.request(guest.profPicURL!).responseImage(completionHandler: {
-                            response in
-                            
-                            print("IMAGE DOWNLOADED")
-                            print(response)
-                            
-                            guest.profPicImage = response.result.value
-                            
-                            self.tableView.reloadData()
-                        })
-                        
-                        self.guests.append(guest)
-                        self.tableView.reloadData()
-                    }
-                }
-                
-            }
-        })
+//        Alamofire.request("https://split2-62ca2.firebaseio.com/guests.json").responseJSON(completionHandler: {
+//            response in
+//            //print(response.result.value)
+//            
+//            if let guestDictionary = response.result.value as? [String: AnyObject] {
+//                
+//                self.guests = []
+//                
+//                for (key, value) in guestDictionary {
+//                    print("Key: \(key)")
+//                    print("Value: \(value)")
+//                    
+//                    if let singleGuestDictionary = value as? [String: AnyObject] {
+//                        let guest = Guest(dictionary: singleGuestDictionary, key: key)
+//                        
+//                        // have to add the pictures here
+//                        
+//                        Alamofire.request(guest.profPicURL!).responseImage(completionHandler: {
+//                            response in
+//                            
+//                            print("IMAGE DOWNLOADED")
+//                            print(response)
+//                            
+//                            guest.profPicImage = response.result.value
+//                            
+//                            self.tableView.reloadData()
+//                        })
+//                        
+//                        self.guests.append(guest)
+//                        self.tableView.reloadData()
+//                    }
+//                }
+//                
+//            }
+//        })
 
     }
     
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "navToAddGuest" {
@@ -99,6 +102,74 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
             
             addGuestVC.delegate = self
         }
+    }
+    
+    func finishedAddingGuests() {
+        dismiss(animated:false, completion: nil)
+        
+        self.tableView.reloadData()
+        print("Added All Guests")
+        //openCamera()
+    }
+    
+    func cameraPressed() {
+        
+        print("CAMERA PRESSED YAY")
+    }
+    
+    
+    
+    func openCamera() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            picker.allowsEditing = false
+            picker.sourceType = UIImagePickerControllerSourceType.camera
+            picker.cameraCaptureMode = .photo
+            
+            //Add guest Button
+            let testView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height/2))
+            let button = UIButton(frame: CGRect(x: self.view.frame.width-150, y: 50, width: 150, height: 50))
+            button.addTarget(self, action: #selector(finishedAddingGuests), for: .touchUpInside)
+            button.layer.backgroundColor = UIColor(hex: "ffffff").cgColor
+            button.setTitle("Done Adding", for: .normal)
+            button.setTitleColor(UIColor.black, for: .normal)
+            
+            testView.addSubview(button)
+            
+//            let tap = UITapGestureRecognizer(target: self, action: #selector(cameraPressed))
+//            tap.delegate = self as? UIGestureRecognizerDelegate
+//            testView.addGestureRecognizer(tap)
+//            testView.isUserInteractionEnabled = true
+            
+            picker.cameraOverlayView = testView
+
+            
+            picker.modalPresentationStyle = .fullScreen
+            present(picker,animated: true,completion: nil)
+        } else {
+            picker.allowsEditing = false
+            picker.sourceType = .photoLibrary
+            picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+            present(picker, animated: true, completion: nil)
+        }
+    }
+    
+    //MARK: - Delegates
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.image = chosenImage
+        
+        guests.append(Guest(profPicImage: chosenImage))
+        
+        //prepare camera for next picture once an image is selected
+        dismiss(animated:false, completion: nil)
+        openCamera()
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
     
     func didAddGuest(guest: Guest?) {
@@ -149,8 +220,8 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
         }
 
         
-        cell.guestName.text = guests[indexPath.row].name
-        cell.guestVenmo.text = guests[indexPath.row].venmoName
+//        cell.guestName.text = guests[indexPath.row].name
+//        cell.guestVenmo.text = guests[indexPath.row].venmoName
         cell.guestImage.setRounded()
         cell.guestImage.contentMode = UIViewContentMode.scaleAspectFill
 
@@ -194,50 +265,4 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
         
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
