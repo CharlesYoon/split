@@ -10,4 +10,5 @@ import Foundation
 
 protocol AddGuestsDelegate {
     func didAddGuest(guest: Guest?)
+    func didAddGuest(guest: GuestDTO?)
 }

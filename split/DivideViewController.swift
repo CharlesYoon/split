@@ -22,6 +22,7 @@ class DivideViewController: UIViewController, ItemGuestsDelegate {
     var guestsDataSource: GuestsDataSource?
     var itemsDataSource: ItemsDataSource?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,10 +38,6 @@ class DivideViewController: UIViewController, ItemGuestsDelegate {
     
         
     }
-    
-    
-
-
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -184,7 +181,13 @@ class DivideViewController: UIViewController, ItemGuestsDelegate {
     
     func getItems() {
         //Realm
-        
+        let items = try! Realm().objects(ItemDTO.self)
+        for item in items{
+            self.itemsDataSource?.secondItems.append(item)
+            self.itemsTableView.delegate = self.itemsDataSource
+            self.itemsTableView.dataSource = self.itemsDataSource
+            self.itemsTableView.reloadData()
+        }
         
         //Firebase
         Alamofire.request("https://split2-62ca2.firebaseio.com/items.json").responseJSON(completionHandler: {
@@ -215,8 +218,13 @@ class DivideViewController: UIViewController, ItemGuestsDelegate {
     
     func getGuests() {
         //Realm
-        var gettingGuests = try! Realm().objects(GuestDTO)
-        
+        let guests = try! Realm().objects(GuestDTO.self)
+        for guest in guests{
+            self.guestsDataSource?.secondGuests.append(guest)
+            self.guestsTableView.delegate = self.guestsDataSource
+            self.guestsTableView.dataSource = self.guestsDataSource
+            self.guestsTableView.reloadData()
+        }
         
         
         //FireBase

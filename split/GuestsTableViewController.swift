@@ -15,6 +15,7 @@ import AlamofireImage
 class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
     
     var guests: [Guest] = []
+    var secondGuests: [GuestDTO] = []
     
     @IBAction func doneButton(_ sender: Any) {
         
@@ -31,8 +32,8 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
         super.viewDidLoad()
         
         //add the Realm DataBase
-        
-        
+        //adding Guests to the database
+        //MARK: ERROR
         
         
         
@@ -112,6 +113,14 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
             self.tableView.reloadData()
         }
     }
+    
+    func didAddGuest(guest: GuestDTO?) {
+        self.secondGuests.append(guest!)
+        DispatchQueue.main.async() {
+            self.tableView.reloadData()
+        }
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -155,8 +164,9 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
     }
     
     func resetGuestMealTotal(guest: Guest?) {
-        
-        //add Realm here
+        // MARK: ERROR
+        // add Realm here
+        // ask Brandon about this function
         // deletes the original item prior to being updated and added back below
         // adds back the item with an updated count
         
@@ -165,7 +175,6 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
         try! realm.write {
             realm.create(GuestDTO.self, value: ["mealTotal": guest?.mealTotal], update: false)
         }
-        
         
         //Firebase portion
         let guestURL = "https://split2-62ca2.firebaseio.com/guests/\((guest?.guestID)!).json"

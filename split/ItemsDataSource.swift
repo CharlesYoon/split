@@ -14,6 +14,7 @@ class ItemsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
 //    var items: [String] = []
     
     var items: [Item] = []
+    var secondItems: [ItemDTO] = []
     var delegate: ItemDelegate?
 
     override init() {
@@ -25,6 +26,14 @@ class ItemsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
 //        for item in items {
 //            self.items.append(item)
 //        }
+    }
+    
+    //add for ItemsDTO
+    init(secondItems: [ItemDTO]) {
+        self.secondItems = secondItems
+        //        for item in items {
+        //            self.items.append(item)
+        //        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

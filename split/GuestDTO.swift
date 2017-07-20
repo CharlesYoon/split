@@ -70,7 +70,7 @@ class GuestDTO: Object{
     }
     
     func toJSON() -> JSON? {
-        let jsonified = ["name": self.name, "venmoName": self.venmoName, "profPicURL": self.profPicURL, "paymentComplete": self.paymentComplete, "mealTotal": self.mealTotal] as JSON
+        let jsonified = ["name": self.name, "venmoName": self.venmoName!, "profPicURL": self.profPicURL, "paymentComplete": self.paymentComplete, "mealTotal": self.mealTotal] as JSON
         return jsonified
     }
     

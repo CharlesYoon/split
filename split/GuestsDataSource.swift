@@ -16,6 +16,7 @@ class GuestsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource, It
 //    var guests: [String] = []
     
     var guests: [Guest] = []
+    var secondGuests: [GuestDTO] = []
     var currentItem: Item?
     
     var delegate: ItemGuestsDelegate?
@@ -27,6 +28,11 @@ class GuestsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource, It
     
     init(guests: [Guest]) {
         self.guests = guests
+    }
+    
+    //Realm
+    init(guests: [GuestDTO]) {
+        self.secondGuests = guests
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

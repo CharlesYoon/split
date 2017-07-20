@@ -8,6 +8,8 @@
 
 import UIKit
 import Alamofire
+import Realm
+import RealmSwift
 import FirebaseStorage
 import AlamofireImage
 
@@ -208,8 +210,11 @@ class AddGuestsViewController: UIViewController, UIImagePickerControllerDelegate
     
     func postActivity(guest: Guest?) {
         //add Realm here
-        
-        
+        let guests = try! Realm().objects(GuestDTO.self)
+        for guest in guests{
+            self.delegate?.didAddGuest(guest: guest)
+            self.dismiss(animated: true, completion: nil)
+        }
         
         //fireBase Here
         Alamofire.request("https://split2-62ca2.firebaseio.com/guests.json", method: .post, parameters: guest?.toJSON(), encoding: JSONEncoding.default).responseJSON(completionHandler: {response in
@@ -227,7 +232,6 @@ class AddGuestsViewController: UIViewController, UIImagePickerControllerDelegate
                         guest?.guestID = value as! String
                     }
                 }
-                
                 self.delegate?.didAddGuest(guest: guest)
                 self.dismiss(animated: true, completion: nil)
                 break

@@ -8,56 +8,83 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>AlamofireImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>DSGradientProgressView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
 		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>Gloss.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Pods-split.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>Realm.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>RealmSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
 		</dict>
 		<key>SwiftyJSONRealmObject.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>11</integer>
 		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -87,7 +114,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>55EBA87E77CF659FD98839E17765C2AF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>67BE68B7BCED470918626AF16510F9E9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6AFCB1E49B9612EA7D1E505A9FC0CA42</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,6 +139,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A03854F5B49720AE08DF4C1998AE649C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
 		<dict>
 			<key>primary</key>
@@ -112,7 +154,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C602128A0604EA9362BD9789327EB14D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D3D5FAAA045E0DAE172DDCB6995662F5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E4DD95323C54A78F879DAB0F1508B8E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F13DA0F262786773717D90E9B6402B87</key>
 		<dict>
 			<key>primary</key>
 			<true/>
