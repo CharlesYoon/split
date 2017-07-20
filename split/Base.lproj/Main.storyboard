@@ -117,6 +117,11 @@
                                 <action selector="rescanButton:" destination="dVk-l7-7UG" id="fmI-FK-mqY"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="PVj-Ms-f7y">
+                            <connections>
+                                <segue destination="b9W-uR-P22" kind="show" id="caY-DA-1y0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="progressView" destination="d0F-uu-yRm" id="1dr-Iv-SpQ"/>
@@ -896,4 +901,7 @@
         <image name="BTprofPic" width="699" height="657"/>
         <image name="ic_menu" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="caY-DA-1y0"/>
+    </inferredMetricsTieBreakers>
 </document>
