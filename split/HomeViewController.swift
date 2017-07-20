@@ -144,9 +144,9 @@ class HomeViewController: UIViewController, RescanDelegate, UIImagePickerControl
     var allBlocks: [Block] = []
     var scanningComplete: Bool? = false
     
-    @IBOutlet weak var splitLogo: UILabel!
-    @IBOutlet weak var scanButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var splitLogo: UIImageView!
+    @IBOutlet weak var scanButton: UIButton!
     
     
     
