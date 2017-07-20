@@ -34,20 +34,60 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSONRealmObject.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>nanopb.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0CB6A1ADC085CD94B746A7777BA8FEAA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1642E27EB5D5EA6C714EA0874FFFB73C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>171ACD86ED21B35A5302A5B85AD5391E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>40E7477AD67135868F5FB08136602674</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4EB3A15D0241CE4681DDB43763AE3CD6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>67BE68B7BCED470918626AF16510F9E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -63,6 +103,16 @@
 			<true/>
 		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C3A1DD18B486F2F4609CB8B5B8857414</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E4DD95323C54A78F879DAB0F1508B8E7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

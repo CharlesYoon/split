@@ -18,9 +18,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("Charles was here")
-       
+               
         picker.delegate = self
         
         // Do any additional setup after loading the view, typically from a nib.
