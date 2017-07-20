@@ -39,10 +39,6 @@ class DivideViewController: UIViewController, ItemGuestsDelegate {
     }
     
     
-
-
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         itemsDataSource = ItemsDataSource()
         guestsDataSource = GuestsDataSource()
@@ -184,7 +180,14 @@ class DivideViewController: UIViewController, ItemGuestsDelegate {
     
     func getItems() {
         //Realm
+        var items = try! Realm().objects(ItemDTO)
         
+        for item in items{
+           
+            self.itemsDataSource?.items = []
+            
+          
+        }
         
         //Firebase
         Alamofire.request("https://split2-62ca2.firebaseio.com/items.json").responseJSON(completionHandler: {

@@ -31,7 +31,7 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate {
         super.viewDidLoad()
         
         //add the Realm DataBase
-        
+        //adding Guests to the database
         
         
         
