@@ -11,9 +11,9 @@ import UIKit
 class GuestsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var guestImage: UIImageView!
-    @IBOutlet weak var guestName: UILabel!
-    @IBOutlet weak var guestVenmo: UILabel!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
+//    @IBOutlet weak var guestName: UILabel!
+//    @IBOutlet weak var guestVenmo: UILabel!
+    //@IBOutlet weak var spinner: UIActivityIndicatorView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -56,10 +56,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FirebaseApp.configure()
         
+        //Changes navbar background color to dark blue
         UINavigationBar.appearance().barTintColor = UIColor(hex: "221E2B")
+        
+        //changes navbar button item colors to yellow
         UINavigationBar.appearance().tintColor = UIColor(hex: "F7CE3E")
         
-        //UINavigationBar.appearance().backgroundColor = UIColor(hex: "221E2B")
+        //changes navbar text to white
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
 
         

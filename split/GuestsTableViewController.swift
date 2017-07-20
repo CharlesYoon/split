@@ -35,6 +35,8 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate, UIIma
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imageView.isHidden = true
+        
         picker.delegate = self
         
         openCamera()
@@ -129,9 +131,9 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate, UIIma
             let testView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height/2))
             let button = UIButton(frame: CGRect(x: self.view.frame.width-150, y: 50, width: 150, height: 50))
             button.addTarget(self, action: #selector(finishedAddingGuests), for: .touchUpInside)
-            button.layer.backgroundColor = UIColor(hex: "ffffff").cgColor
+            button.layer.backgroundColor = UIColor(hex: "221E2B").cgColor
             button.setTitle("Done Adding", for: .normal)
-            button.setTitleColor(UIColor.black, for: .normal)
+            button.setTitleColor(UIColor(hex: "F7CE3E"), for: .normal)
             
             testView.addSubview(button)
             
@@ -212,11 +214,11 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate, UIIma
         //If profile pic has loaded, hide spinner
         if let profPic = guests[indexPath.row].profPicImage {
             cell.guestImage.image = profPic
-            cell.spinner.stopAnimating()
-            cell.spinner.isHidden = true
+            //cell.spinner.stopAnimating()
+            //cell.spinner.isHidden = true
         } else {
-            cell.spinner.startAnimating()
-            cell.spinner.isHidden = false
+//            cell.spinner.startAnimating()
+//            cell.spinner.isHidden = false
         }
 
         
@@ -224,6 +226,9 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate, UIIma
 //        cell.guestVenmo.text = guests[indexPath.row].venmoName
         cell.guestImage.setRounded()
         cell.guestImage.contentMode = UIViewContentMode.scaleAspectFill
+        
+        cell.guestImage.layer.borderWidth = 1
+        cell.guestImage.layer.borderColor = UIColor(hex: "F7CE3E").cgColor
 
 
         return cell
