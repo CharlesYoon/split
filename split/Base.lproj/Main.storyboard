@@ -633,7 +633,7 @@
                                         <rect key="frame" x="0.0" y="28" width="128" height="114"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uXp-or-Feg" id="oWV-AF-i6w">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="114"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="113.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BTprofPic" translatesAutoresizingMaskIntoConstraints="NO" id="97w-VG-OeT">
@@ -661,7 +661,7 @@
                                         <rect key="frame" x="0.0" y="28" width="239" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a9t-ZS-l5e" id="Qk7-2u-Ayk">
-                                            <rect key="frame" x="0.0" y="0.0" width="239" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="239" height="58.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaC-Zu-h32">

@@ -91,6 +91,7 @@ class GuestsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource, It
             print((currentItem?.price)!)
             print((currentItem?.isAssigned)!)
         }
+        
 
         
     

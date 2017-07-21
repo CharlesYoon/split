@@ -107,7 +107,7 @@ class DivideViewController: UIViewController, ItemGuestsDelegate {
                 print((i.mealTotal)!)
                 
                 //updateGuestData(guest: i)
-                self.guestsTableView.reloadData()
+                //self.guestsTableView.reloadData()
 
             }
         }
