@@ -756,7 +756,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44k-AQ-36u">
-                                            <rect key="frame" x="229" y="38" width="132" height="37.5"/>
+                                            <rect key="frame" x="241" y="38" width="120" height="37.5"/>
                                             <color key="backgroundColor" red="0.7725490196" green="0.75686274509999996" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <state key="normal" title="Request Payment">
                                                 <color key="titleColor" red="0.1019607843" green="0.16078431369999999" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -783,7 +783,7 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="44k-AQ-36u" secondAttribute="trailing" constant="6" id="3JK-Jm-7iZ"/>
                                         <constraint firstItem="yRI-Ea-EB5" firstAttribute="top" secondItem="PXF-zq-z80" secondAttribute="topMargin" constant="21" id="Dwo-Zo-xNk"/>
                                         <constraint firstItem="yRI-Ea-EB5" firstAttribute="leading" secondItem="deZ-ZO-489" secondAttribute="trailing" constant="17" id="EcH-DB-Ujd"/>
-                                        <constraint firstItem="44k-AQ-36u" firstAttribute="leading" secondItem="yRI-Ea-EB5" secondAttribute="trailing" constant="23" id="H8F-7J-y3W"/>
+                                        <constraint firstItem="44k-AQ-36u" firstAttribute="leading" secondItem="deZ-ZO-489" secondAttribute="trailing" constant="138" id="IZx-vw-be7"/>
                                         <constraint firstItem="deZ-ZO-489" firstAttribute="centerY" secondItem="yRI-Ea-EB5" secondAttribute="centerY" id="OYT-tQ-mnb"/>
                                         <constraint firstItem="Pk2-Sa-2bO" firstAttribute="centerX" secondItem="yRI-Ea-EB5" secondAttribute="centerX" id="YgP-nT-JF4"/>
                                         <constraint firstItem="deZ-ZO-489" firstAttribute="centerY" secondItem="PXF-zq-z80" secondAttribute="centerY" id="bYz-sL-e8i"/>
