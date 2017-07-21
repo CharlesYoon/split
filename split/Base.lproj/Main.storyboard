@@ -637,13 +637,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BTprofPic" translatesAutoresizingMaskIntoConstraints="NO" id="97w-VG-OeT">
-                                                    <rect key="frame" x="27" y="19" width="75" height="75"/>
+                                                    <rect key="frame" x="17" y="10" width="95" height="95"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="97w-VG-OeT" firstAttribute="centerX" secondItem="oWV-AF-i6w" secondAttribute="centerX" id="6hZ-at-Oty"/>
-                                                <constraint firstItem="97w-VG-OeT" firstAttribute="top" secondItem="oWV-AF-i6w" secondAttribute="topMargin" constant="11" id="IKV-44-gSJ"/>
-                                                <constraint firstItem="97w-VG-OeT" firstAttribute="leading" secondItem="oWV-AF-i6w" secondAttribute="leadingMargin" constant="19" id="KPU-Hc-IgZ"/>
+                                                <constraint firstItem="97w-VG-OeT" firstAttribute="top" secondItem="oWV-AF-i6w" secondAttribute="topMargin" constant="2" id="IKV-44-gSJ"/>
+                                                <constraint firstItem="97w-VG-OeT" firstAttribute="leading" secondItem="oWV-AF-i6w" secondAttribute="leadingMargin" constant="9" id="KPU-Hc-IgZ"/>
                                                 <constraint firstItem="97w-VG-OeT" firstAttribute="centerY" secondItem="oWV-AF-i6w" secondAttribute="centerY" id="lby-2C-u3b"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -749,20 +749,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="113.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="deZ-ZO-489">
-                                            <rect key="frame" x="28" y="19" width="75" height="75"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="75" id="32e-Pz-wap"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$23.19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRI-Ea-EB5">
-                                            <rect key="frame" x="120" y="29" width="86" height="55"/>
+                                            <rect key="frame" x="120" y="29" width="86" height="55.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44k-AQ-36u">
-                                            <rect key="frame" x="229" y="38" width="132" height="37"/>
+                                            <rect key="frame" x="229" y="38" width="132" height="37.5"/>
                                             <color key="backgroundColor" red="0.7725490196" green="0.75686274509999996" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <state key="normal" title="Request Payment">
                                                 <color key="titleColor" red="0.1019607843" green="0.16078431369999999" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -777,6 +771,12 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="deZ-ZO-489">
+                                            <rect key="frame" x="8" y="10" width="95" height="95"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="95" id="32e-Pz-wap"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="44k-AQ-36u" firstAttribute="top" secondItem="PXF-zq-z80" secondAttribute="topMargin" constant="30" id="0dz-wd-IbG"/>
@@ -787,10 +787,10 @@
                                         <constraint firstItem="deZ-ZO-489" firstAttribute="centerY" secondItem="yRI-Ea-EB5" secondAttribute="centerY" id="OYT-tQ-mnb"/>
                                         <constraint firstItem="Pk2-Sa-2bO" firstAttribute="centerX" secondItem="yRI-Ea-EB5" secondAttribute="centerX" id="YgP-nT-JF4"/>
                                         <constraint firstItem="deZ-ZO-489" firstAttribute="centerY" secondItem="PXF-zq-z80" secondAttribute="centerY" id="bYz-sL-e8i"/>
-                                        <constraint firstItem="deZ-ZO-489" firstAttribute="top" secondItem="PXF-zq-z80" secondAttribute="topMargin" constant="11" id="bm8-AI-4Dl"/>
-                                        <constraint firstItem="deZ-ZO-489" firstAttribute="leading" secondItem="PXF-zq-z80" secondAttribute="leadingMargin" constant="20" id="owm-6e-8KN"/>
+                                        <constraint firstItem="deZ-ZO-489" firstAttribute="top" secondItem="PXF-zq-z80" secondAttribute="topMargin" constant="2" id="bm8-AI-4Dl"/>
+                                        <constraint firstItem="deZ-ZO-489" firstAttribute="leading" secondItem="PXF-zq-z80" secondAttribute="leadingMargin" id="owm-6e-8KN"/>
                                         <constraint firstItem="yRI-Ea-EB5" firstAttribute="centerY" secondItem="44k-AQ-36u" secondAttribute="centerY" id="qXW-bN-zrT"/>
-                                        <constraint firstItem="deZ-ZO-489" firstAttribute="top" secondItem="Pk2-Sa-2bO" secondAttribute="top" id="sp2-JY-B6I"/>
+                                        <constraint firstItem="deZ-ZO-489" firstAttribute="top" secondItem="Pk2-Sa-2bO" secondAttribute="top" constant="-9" id="sp2-JY-B6I"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

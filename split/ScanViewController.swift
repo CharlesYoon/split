@@ -237,9 +237,14 @@ class ScanViewController: UIViewController {
             return false
         }
         
-        let pricesWithoutZero = prices.filter{$0 != 0.0}
+        let pricesWithoutZero = prices.filter{$0 != 0.0}.count
+        
+        //check if counts match up when removing 0
+//        let zeroIndex = prices.index(of: 0.0)
+//        var pricesWithoutZero = prices
+        //pricesWithoutZero.remove(at: zeroIndex!)
         //check there are same # of items as prices
-        if pricesWithoutZero.count != allItems.count {
+        if pricesWithoutZero != allItems.count {
             return false
         }
         
