@@ -11,10 +11,6 @@ import UIKit
 
 class GuestsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource, ItemDelegate {
     
-    
-    
-//    var guests: [String] = []
-    
     var guests: [Guest] = []
     var secondGuests: [GuestDTO] = []
     var currentItem: Item?
@@ -51,11 +47,15 @@ class GuestsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource, It
         
                 
         
-        cell.guestName.text = guests[indexPath.row].name //"Brandon Taleisnik"
+        //cell.guestName.text = guests[indexPath.row].name //"Brandon Taleisnik"
         cell.guestPic.image = guests[indexPath.row].profPicImage
         cell.guestPic.setRounded()
         cell.guestPic.contentMode = UIViewContentMode.scaleAspectFill
         cell.guestID = guests[indexPath.row].guestID
+        
+        cell.guestPic.layer.borderWidth = 2
+        cell.guestPic.layer.borderColor = UIColor(hex: "F7CE3E").cgColor
+
         
         return cell
     }
@@ -64,7 +64,11 @@ class GuestsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource, It
         
         let currentCell = tableView.cellForRow(at: indexPath) as! ItemGuestsTableViewCell
         
-        let currentGuest = Guest(guestID: currentCell.guestID, name: currentCell.guestName.text, profPicURL: "Need to add Image URL Functionality")
+        currentCell.contentView.backgroundColor = UIColor(hex: "221E2B")
+        
+        let currentGuest = Guest(profPicImage: currentCell.guestPic.image, guestID: currentCell.guestID!)
+        
+        
         
         print("\nCurrent Guest: " + currentGuest.name! + " " + currentGuest.guestID!)
         print("Current Item: " + (currentItem?.name)!)

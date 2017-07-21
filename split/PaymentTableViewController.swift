@@ -52,11 +52,13 @@ class PaymentTableViewController: UITableViewController {
         
         let priceLabel = String(format: "%.2f", arguments: [Double(guestsDataSource!.guests[indexPath.row].mealTotal!)])
 
-        cell.guestName.text = guestsDataSource!.guests[indexPath.row].name
+        //cell.guestName.text = guestsDataSource!.guests[indexPath.row].name
         cell.priceLabel.text = "$\(priceLabel)"
         cell.guestPic.image = guestsDataSource!.guests[indexPath.row].profPicImage
         cell.guestPic.setRounded()
         cell.guestPic.contentMode = UIViewContentMode.scaleAspectFill
+        cell.guestPic.layer.borderWidth = 2
+        cell.guestPic.layer.borderColor = UIColor(hex: "F7CE3E").cgColor
         
 
         cell.selectionStyle = UITableViewCellSelectionStyle.none

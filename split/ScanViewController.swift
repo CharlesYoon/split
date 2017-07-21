@@ -117,6 +117,7 @@ class ScanViewController: UIViewController {
         var currentBlock: Block = allBlocks[sender.tag]
         foundDouble = false
         
+        var counter: Int = 0
         
         for i in 0..<currentBlock.paragraphs.count {
             //print(currentBlock.paragraphs[i])
@@ -174,7 +175,8 @@ class ScanViewController: UIViewController {
                     if nextPriceIndexToAdd < prices.count {
                         //if item is not free (discard/skip if it is), assign price to item
                         if prices[nextPriceIndexToAdd] != 0.0 {
-                            items.append(Item(name: currentBlock.paragraphs[i][k], price: prices[nextPriceIndexToAdd]))
+                            items.append(Item(name: currentBlock.paragraphs[i][k], price: prices[nextPriceIndexToAdd], itemID: String(counter)))
+                            counter += 1
                         }
                         nextPriceIndexToAdd += 1
                     }
@@ -185,23 +187,23 @@ class ScanViewController: UIViewController {
         //if all data seems complete (i.e. items.count = prices.count, sum(prices) = total, etc.)
         if checkItemCompletion(prices: prices, total: total, allItems: items) == true {
             
-            Alamofire.request("https://split2-62ca2.firebaseio.com/items.json", method: .delete)
-
-            for item in items {
-                Alamofire.request("https://split2-62ca2.firebaseio.com/items.json", method: .post, parameters: item.toJSON(), encoding: JSONEncoding.default).responseJSON(completionHandler: {response in
-    
-                    switch response.result {
-                    case .success:
-                        //                self.delegate?.didAddActivity(activity: activityDto!)
-                        //self.dismiss(animated: true, completion: nil)
-                        break
-                    case .failure:
-                        // TODO: Display an error dialog
-                        break
-                    }
-                    
-                })
-            }
+//            Alamofire.request("https://split2-62ca2.firebaseio.com/items.json", method: .delete)
+//
+//            for item in items {
+//                Alamofire.request("https://split2-62ca2.firebaseio.com/items.json", method: .post, parameters: item.toJSON(), encoding: JSONEncoding.default).responseJSON(completionHandler: {response in
+//    
+//                    switch response.result {
+//                    case .success:
+//                        //                self.delegate?.didAddActivity(activity: activityDto!)
+//                        //self.dismiss(animated: true, completion: nil)
+//                        break
+//                    case .failure:
+//                        // TODO: Display an error dialog
+//                        break
+//                    }
+//                    
+//                })
+//            }
             
             performSegue(withIdentifier: "navToGuests", sender: nil)
         }
@@ -210,13 +212,12 @@ class ScanViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "navToItems" {
-//            let itemsVC = segue.destination as! ItemsTableViewController
-//            
-//            itemsVC.allItems = self.allItems
-//            
-//            // navigationController?.pushViewController(itemsVC, animated: true)
-//        }
+        if segue.identifier == "navToGuests" {
+            let guestsVC = segue.destination as! GuestsTableViewController
+            
+            guestsVC.items = self.items
+            
+        }
     }
     
     func checkItemCompletion(prices: [Double], total: Double?, allItems: [Item]) -> Bool {

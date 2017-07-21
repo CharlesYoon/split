@@ -32,13 +32,14 @@ class Guest{
         self.items = []
     }
     
-    init(profPicImage: UIImage?) {
+    init(profPicImage: UIImage?, guestID: String) {
         self.name = ""
         self.venmoName = ""
         self.profPicImage = profPicImage
         self.paymentComplete = false
         self.mealTotal = 0.0
         self.items = []
+        self.guestID = guestID
     }
     
     init(name: String?, venmoName: String?, profPicURL: String?) {

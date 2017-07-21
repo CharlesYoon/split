@@ -64,6 +64,9 @@ class ItemsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
         cell.itemName.text = items[indexPath.row].name //"Brandon Taleisnik"
         cell.priceLabel.text = "$\(priceLabel)"
         
+        cell.itemName.textColor = UIColor.black
+        cell.priceLabel.textColor = UIColor.black
+        
         
         return cell
     }
@@ -72,12 +75,20 @@ class ItemsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
         
         let currentCell = tableView.cellForRow(at: indexPath) as! ItemTableViewCell
         
+        currentCell.contentView.backgroundColor = UIColor(hex: "221E2B")
+        currentCell.itemName?.textColor = UIColor(hex: "F7CE3E")
+        currentCell.priceLabel?.textColor = UIColor(hex: "F7CE3E")
+        
+//        currentCell.isAssigned = items[indexPath.row].isAssigned
+//        
+//        if currentCell.isAssigned == true {
+//            currentCell.selectionStyle = UITableViewCellSelectionStyle.none
+//            currentCell.accessoryType = UITableViewCellAccessoryType.checkmark
+//        }
+        
         print("\nCURRENT SELECTED CELL")
         print(currentCell.itemName.text!)
         print(currentCell.priceLabel.text!)
-        //Need to figure out way to access isAssigned; maybe add Item() variable to ItemTableViewCell, and initialize itemName and priceLabel as member variables of that item, and access those member variables via cell.item.itemName
-        
-//        self.delegate?.didAddActivity(activity: activityDto!)
         
         //Remove $ sign, then convert to string
         var price = currentCell.priceLabel.text!
@@ -87,8 +98,6 @@ class ItemsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
         let current_item = Item(name: currentCell.itemName.text, price: Double(price), itemID: currentCell.itemID)
         
         self.delegate?.didSelectItem(item: current_item)
-        
-        
         
     }
     

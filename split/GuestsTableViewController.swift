@@ -17,7 +17,10 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate, UIIma
     @IBOutlet weak var imageView: UIImageView!
     
     var guests: [Guest] = []
+    var items: [Item] = []
     var secondGuests: [GuestDTO] = []
+    
+    var counter: Int = 0
     
     let picker = UIImagePickerController()
     
@@ -30,6 +33,11 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate, UIIma
         }
         
         performSegue(withIdentifier: "navToDivide", sender: nil)
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -97,12 +105,12 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate, UIIma
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "navToAddGuest" {
+        if segue.identifier == "navToDivide" {
             
-            let navVC = segue.destination as! UINavigationController
-            let addGuestVC = navVC.topViewController as! AddGuestsViewController
+            let divideVC = segue.destination as! DivideViewController
             
-            addGuestVC.delegate = self
+            divideVC.guestsDataSource?.guests = self.guests
+            divideVC.itemsDataSource?.items = self.items
         }
     }
     
@@ -129,10 +137,10 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate, UIIma
             
             //Add guest Button
             let testView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height/2))
-            let button = UIButton(frame: CGRect(x: self.view.frame.width-150, y: 50, width: 150, height: 50))
+            let button = UIButton(frame: CGRect(x: self.view.frame.width-320, y: 50, width: 250, height: 50))
             button.addTarget(self, action: #selector(finishedAddingGuests), for: .touchUpInside)
             button.layer.backgroundColor = UIColor(hex: "221E2B").cgColor
-            button.setTitle("Done Adding", for: .normal)
+            button.setTitle("Done Adding Guests", for: .normal)
             button.setTitleColor(UIColor(hex: "F7CE3E"), for: .normal)
             
             testView.addSubview(button)
@@ -163,8 +171,8 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate, UIIma
 //        imageView.contentMode = .scaleAspectFit
 //        imageView.image = chosenImage
         
-        guests.append(Guest(profPicImage: chosenImage))
-        
+        guests.append(Guest(profPicImage: chosenImage, guestID: String(counter)))
+        counter += 1
         //prepare camera for next picture once an image is selected
         dismiss(animated:false, completion: nil)
         openCamera()
@@ -172,6 +180,7 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate, UIIma
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+        self.tableView.reloadData()
     }
     
     func didAddGuest(guest: Guest?) {
@@ -227,7 +236,7 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate, UIIma
         cell.guestImage.setRounded()
         cell.guestImage.contentMode = UIViewContentMode.scaleAspectFill
         
-        cell.guestImage.layer.borderWidth = 1
+        cell.guestImage.layer.borderWidth = 4
         cell.guestImage.layer.borderColor = UIColor(hex: "F7CE3E").cgColor
 
 
@@ -241,32 +250,32 @@ class GuestsTableViewController: UITableViewController, AddGuestsDelegate, UIIma
         // deletes the original item prior to being updated and added back below
         // adds back the item with an updated count
         
-        let realm = try! Realm()
-        
-        try! realm.write {
-            realm.create(GuestDTO.self, value: ["mealTotal": guest?.mealTotal], update: false)
-        }
-        
-        //Firebase portion
-        let guestURL = "https://split2-62ca2.firebaseio.com/guests/\((guest?.guestID)!).json"
-        
-        Alamofire.request(guestURL, method: .put, parameters: guest?.toJSON(), encoding: JSONEncoding.default).responseJSON(completionHandler: {response in
-            
-            switch response.result {
-            case .success:
-                
-                print("UPDATED:")
-                print(response.result.value!)
-                
-                //                self.delegate?.didAddActivity(activity: activityDto!)
-                //self.dismiss(animated: true, completion: nil)
-                break
-            case .failure:
-                // TODO: Display an error dialog
-                break
-            }
-            
-        })
+//        let realm = try! Realm()
+//        
+//        try! realm.write {
+//            realm.create(GuestDTO.self, value: ["mealTotal": guest?.mealTotal], update: false)
+//        }
+//        
+//        //Firebase portion
+//        let guestURL = "https://split2-62ca2.firebaseio.com/guests/\((guest?.guestID)!).json"
+//        
+//        Alamofire.request(guestURL, method: .put, parameters: guest?.toJSON(), encoding: JSONEncoding.default).responseJSON(completionHandler: {response in
+//            
+//            switch response.result {
+//            case .success:
+//                
+//                print("UPDATED:")
+//                print(response.result.value!)
+//                
+//                //                self.delegate?.didAddActivity(activity: activityDto!)
+//                //self.dismiss(animated: true, completion: nil)
+//                break
+//            case .failure:
+//                // TODO: Display an error dialog
+//                break
+//            }
+//            
+//        })
         
     }
     

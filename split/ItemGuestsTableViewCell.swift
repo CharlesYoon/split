@@ -11,7 +11,7 @@ import UIKit
 class ItemGuestsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var guestPic: UIImageView!
-    @IBOutlet weak var guestName: UILabel!
+//    @IBOutlet weak var guestName: UILabel!
     
 //    var guest: Guest?
     var guestID: String?

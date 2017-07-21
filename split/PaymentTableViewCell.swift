@@ -11,7 +11,7 @@ import UIKit
 class PaymentTableViewCell: UITableViewCell {
 
     @IBOutlet weak var guestPic: UIImageView!
-    @IBOutlet weak var guestName: UILabel!
+    //@IBOutlet weak var guestName: UILabel!
     @IBOutlet weak var owesLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
