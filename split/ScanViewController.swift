@@ -23,7 +23,11 @@ class ScanViewController: UIViewController {
     var nextPriceIndexToAdd: Int = 0
     var scanningComplete: Bool?
     var delegate: RescanDelegate?
-    
+    var quantity: Int? = 0
+    var nextQuantityFound: Bool = false
+    var anyQuantityFound: Bool?
+    var currentItemName: String = ""
+    var concatItemName: String = ""
     
     
     @IBOutlet weak var progressView: DSGradientProgressView!
@@ -85,24 +89,6 @@ class ScanViewController: UIViewController {
                 
                 counter += 1
             }
-            
-            //let newBlock: [Block] = rescaleBlock(viewSize: viewSize, imageSize: receiptImage?.size, allBlocks: allBlocks, imageLocation: imageLocation)
-            
-            //draw re-scaled blocks
-            //counter = 0
-            //for block in newBlock {
-            //    let button = calcButtonCoordinates(block: block)
-            //    button.tag = counter
-            //    button.addTarget(self, action: #selector(blockTapped), for: .touchUpInside)
-            //    button.layer.borderColor = UIColor.green.cgColor
-            //    button.layer.borderWidth = 2
-            //    //view.addSubview(button)
-            //    receiptimageView.addSubview(button)
-            
-            
-            
-            //    counter += 1
-            //}
         }
     }
 
@@ -162,6 +148,7 @@ class ScanViewController: UIViewController {
         }
         
         //if prices existed in the block, we're done and our work was already done above
+        //if not, it's likely a block that contains Items that the user tapped
         if foundDouble == false {
             
             //sender.layer.borderColor = UIColor.cyan.cgColor
@@ -171,14 +158,79 @@ class ScanViewController: UIViewController {
             for i in 0..<currentBlock.paragraphs.count {
                 for k in 0..<currentBlock.paragraphs[i].count {
                     
-                    //make sure prices index is in scope, if not, exit
-                    if nextPriceIndexToAdd < prices.count {
-                        //if item is not free (discard/skip if it is), assign price to item
-                        if prices[nextPriceIndexToAdd] != 0.0 {
-                            items.append(Item(name: currentBlock.paragraphs[i][k], price: prices[nextPriceIndexToAdd], itemID: String(counter)))
-                            counter += 1
+                    currentItemName = currentBlock.paragraphs[i][k]
+                    
+                    //if no quantity has been set, look for one
+                    if anyQuantityFound == nil {
+                        let firstChar = String(currentItemName[0])
+                        if firstChar.isInt == true {
+                            
+                            anyQuantityFound = true
                         }
-                        nextPriceIndexToAdd += 1
+                    
+                    //if the receipt has quantities, enter different logic to divide quantity and check for multi-line items
+                    }
+                    
+                    if anyQuantityFound == true {
+                        let firstChar = String(currentItemName[0])
+                        if firstChar.isInt == true {
+
+                            quantity = Int(firstChar)!
+                            
+                            // Integer found means start of new item so clear concat string
+                            concatItemName = ""
+                            
+                            //remove quantity character and space from string
+                            currentItemName.remove(at: currentItemName.startIndex) //remove quantity
+                            currentItemName.remove(at: currentItemName.startIndex) //remove space
+                        
+                            concatItemName = currentItemName
+                        } else {
+                            concatItemName += currentItemName
+                        }
+                        
+                        
+                        //make sure prices index is in scope, if not, exit
+                        if nextPriceIndexToAdd < prices.count {
+                            //if item is not free (discard/skip if it is), assign price to item
+                            if prices[nextPriceIndexToAdd] != 0.0 {
+                                
+                                    //Calculate unit price depending on quantity count
+                                    let priceToAdd = prices[nextPriceIndexToAdd]/Double(quantity!)
+                                    
+                                    //Add as many items as quantity is set to. If quantity=2, add 2 items with price = price/2
+                                    for _ in 0..<quantity! {
+                                        items.append(Item(name: currentBlock.paragraphs[i][k], price: priceToAdd, itemID: String(counter)))
+                                        counter += 1
+                                    }
+                                    
+                                    //if no quantities are listed on receipt, just add it
+                                
+                            }
+                            nextPriceIndexToAdd += 1
+                        }
+
+                        
+                        
+                    //if no quantity found, add items one line at a time normally
+                    } else {
+                        
+                        //make sure prices index is in scope, if not, exit
+                        if nextPriceIndexToAdd < prices.count {
+                            //if item is not free (discard/skip if it is), assign price to item
+                            if prices[nextPriceIndexToAdd] != 0.0 {
+                                    
+                                    let priceToAdd = prices[nextPriceIndexToAdd]
+                                
+                                    items.append(Item(name: currentBlock.paragraphs[i][k], price: priceToAdd, itemID: String(counter)))
+                                
+                                    counter += 1
+                                
+                                    //if no quantities are listed on receipt, just add it
+                            }
+                            nextPriceIndexToAdd += 1
+                        }
+
                     }
                 }
             }
@@ -237,14 +289,12 @@ class ScanViewController: UIViewController {
             return false
         }
         
-        let pricesWithoutZero = prices.filter{$0 != 0.0}.count
+        //let pricesWithoutZero = prices.filter{$0 != 0.0}.count
         
-        //check if counts match up when removing 0
-//        let zeroIndex = prices.index(of: 0.0)
-//        var pricesWithoutZero = prices
-        //pricesWithoutZero.remove(at: zeroIndex!)
-        //check there are same # of items as prices
-        if pricesWithoutZero != allItems.count {
+        let pricesSum = prices.reduce(0, +)
+        
+        //check if all prices are accounted for in items[]
+        if itemSum != pricesSum {
             return false
         }
         

@@ -356,6 +356,9 @@ extension HomeViewController {
                                 //this handles instances when decimal in price is interpreted as , so attempt to convert to double will fail; if all , are . we circumvent this
                                 if currentSymbol.text == "," {
                                     currentSymbol.text = "."
+                                //remove all dollar signs in case it's next to a price, since can't convert to double if a $ exists
+                                } else if currentSymbol.text == "$" {
+                                    currentSymbol.text = ""
                                 }
                                 currentWord.word.append(currentSymbol)
                             }
