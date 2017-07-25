@@ -116,6 +116,31 @@ class ScanViewController: UIViewController {
                     foundDouble = true
                     //sender.layer.borderColor = UIColor.cyan.cgColor
                     sender.backgroundColor = UIColor(red: 84/255, green: 136/255, blue: 138/255, alpha: 0.5)
+                    
+                //check if first letter is R (for Rand), and if so, try to remove then convert to double. If success, add price, otherwise add R back and continue
+                } else {
+                    //If first character is R (for rand), try to remove then convert to double.
+                    let firstChar = currentBlock.paragraphs[i][k][0]
+                    if firstChar == "R" {
+                        
+                        //remove R character from string
+                        currentBlock.paragraphs[i][k].remove(at: currentItemName.startIndex) //remove quantity
+                        
+                        //try to convert new string to double, add as price if successful
+                        if let priceDouble = currentBlock.paragraphs[i][k].doubleValue {
+                            prices.append(priceDouble)
+                            foundDouble = true
+                            //sender.layer.borderColor = UIColor.cyan.cgColor
+                            sender.backgroundColor = UIColor(red: 84/255, green: 136/255, blue: 138/255, alpha: 0.5)
+                            
+                        //if fails, then must not be a price, so add letter back in and continue
+                        } else {
+                            currentBlock.paragraphs[i][k].insert(firstChar, at: currentBlock.paragraphs[i][k].startIndex)
+                        }
+                        
+
+                    }
+                    
                 }
             }
         }
