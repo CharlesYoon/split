@@ -282,6 +282,26 @@ extension HomeViewController {
                     var counter = 0
                     for x in currentVertices {
                         
+                        
+                        //if coordinates in JSON response were not pulled correctly, rescan
+                        guard let checkXCoord = x.1["x"].rawValue as? NSNumber else {
+                            _ = UIAlertAction(title: "Error, please rescan", style: .default, handler: { (action) -> Void in
+
+                                self.didClickRescan()
+                            })
+                            
+                            return
+                        }
+                        
+                        guard let checkYCoord = x.1["y"].rawValue as? NSNumber else {
+                            _ = UIAlertAction(title: "Error, please rescan", style: .default, handler: { (action) -> Void in
+                                
+                                self.didClickRescan()
+                            })
+                            
+                            return
+                        }
+                        
                         let cgfloatX = CGFloat((x.1["x"].rawValue as? NSNumber)!)
                         let cgfloatY = CGFloat((x.1["y"].rawValue as? NSNumber)!)
                         

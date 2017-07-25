@@ -180,29 +180,37 @@ class ScanViewController: UIViewController {
             //sender.layer.borderColor = UIColor.cyan.cgColor
             sender.backgroundColor = UIColor(red: 84/255, green: 136/255, blue: 138/255, alpha: 0.5)
             
-            //for each item, assign it a price, add to items dictionary, and update priceAdded tracker
+            //loop through block to see if any quantities exist; even if a non-item got blocked with quantitied items
             for i in 0..<currentBlock.paragraphs.count {
                 for k in 0..<currentBlock.paragraphs[i].count {
                     
-                    currentItemName = currentBlock.paragraphs[i][k]
-                    
-                    //if no quantity has been set, look for one
                     if anyQuantityFound == nil {
-                        let firstChar = String(currentItemName[0])
+                        let firstChar = String(currentBlock.paragraphs[i][k][0])
                         if firstChar.isInt == true {
                             
                             anyQuantityFound = true
                             
                             
                         }
-                    
+                        
                     }
+                    
+                }
+            }
+            
+            //for each item, assign it a price, add to items dictionary, and update priceAdded tracker
+            for i in 0..<currentBlock.paragraphs.count {
+                for k in 0..<currentBlock.paragraphs[i].count {
+                    
+                    currentItemName = currentBlock.paragraphs[i][k]
+                    
+                    
                     
                     //if the receipt has quantities, enter different logic to divide quantity and check for multi-line items
                     if anyQuantityFound == true {
                         let firstChar = String(currentItemName[0])
                         if firstChar.isInt == true {
-
+                            
                             //If concatItemName has text, that means we found next item if first char is integer
                             if concatItemName != "" {
                                 
@@ -234,9 +242,15 @@ class ScanViewController: UIViewController {
                                 concatItemName = currentItemName
                             }
                             
-                        //if line doesn't have quantity, likely multi-line item, so append
+                        //if line doesn't have quantity, either non-item or multi-line item
                         } else {
-                            concatItemName += " \(currentItemName)"
+                            
+                            //if the items have quantities, and items[] is empty, but this line doesn't have a quantity, assume it's a non-item that's blocked in with the items so skip until you find the first line with a quantity which is likely first true item
+                            if items.count == 0 {
+                                continue
+                            } else {
+                                concatItemName += " \(currentItemName)"
+                            }
                         }
                         
                         //if next quantity has been found, add current item, and reset variables

@@ -182,11 +182,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Guests" id="YjT-oF-J6w">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="CUn-Ps-zLy">
-                            <connections>
-                                <segue destination="vsV-54-MtZ" kind="presentation" identifier="navToAddGuest" id="bTd-cL-5Fe"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="I4D-1V-dqf">
                             <connections>
                                 <action selector="doneButton:" destination="b9W-uR-P22" id="jW6-oE-rfB"/>
