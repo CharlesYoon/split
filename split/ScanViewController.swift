@@ -26,6 +26,7 @@ class ScanViewController: UIViewController {
     var quantity: Int? = 0
     var nextQuantityFound: Bool = false
     var anyQuantityFound: Bool?
+    var nextQuantity: Int?
     var currentItemName: String = ""
     var concatItemName: String = ""
     
@@ -166,50 +167,81 @@ class ScanViewController: UIViewController {
                         if firstChar.isInt == true {
                             
                             anyQuantityFound = true
+                            
+                            
                         }
                     
-                    //if the receipt has quantities, enter different logic to divide quantity and check for multi-line items
                     }
                     
+                    //if the receipt has quantities, enter different logic to divide quantity and check for multi-line items
                     if anyQuantityFound == true {
                         let firstChar = String(currentItemName[0])
                         if firstChar.isInt == true {
 
-                            quantity = Int(firstChar)!
+                            //If concatItemName has text, that means we found next item if first char is integer
+                            if concatItemName != "" {
+                                
+                                nextQuantityFound = true
+                                
+                                nextQuantity = Int(firstChar)!
+                                
+                                //remove quantity character and space from string
+                                currentItemName.remove(at: currentItemName.startIndex) //remove quantity
+                                currentItemName.remove(at: currentItemName.startIndex) //remove space
+                                
+                                
+
+                            //concatItemName string is empty, so add start new Item string
+                            } else {
+                                quantity = Int(firstChar)!
+                                
+                                // Integer found means start of new item so clear concat string
+                                concatItemName = ""
+                                
+                                //If quantity is first char, start of new item, so reset nextQuantityFound
+                                nextQuantityFound = false
+                                
+                                //remove quantity character and space from string
+                                currentItemName.remove(at: currentItemName.startIndex) //remove quantity
+                                currentItemName.remove(at: currentItemName.startIndex) //remove space
+                                
+                                
+                                concatItemName = currentItemName
+                            }
                             
-                            // Integer found means start of new item so clear concat string
-                            concatItemName = ""
-                            
-                            //remove quantity character and space from string
-                            currentItemName.remove(at: currentItemName.startIndex) //remove quantity
-                            currentItemName.remove(at: currentItemName.startIndex) //remove space
-                        
-                            concatItemName = currentItemName
+                        //if line doesn't have quantity, likely multi-line item, so append
                         } else {
-                            concatItemName += currentItemName
+                            concatItemName += " \(currentItemName)"
                         }
                         
-                        
-                        //make sure prices index is in scope, if not, exit
-                        if nextPriceIndexToAdd < prices.count {
-                            //if item is not free (discard/skip if it is), assign price to item
-                            if prices[nextPriceIndexToAdd] != 0.0 {
-                                
+                        //if next quantity has been found, add current item, and reset variables
+                        if nextQuantityFound == true {
+                            
+                            //make sure prices index is in scope, if not, exit
+                            if nextPriceIndexToAdd < prices.count {
+                                //if item is not free (discard/skip if it is), assign price to item
+                                if prices[nextPriceIndexToAdd] != 0.0 {
+                                    
                                     //Calculate unit price depending on quantity count
                                     let priceToAdd = prices[nextPriceIndexToAdd]/Double(quantity!)
                                     
                                     //Add as many items as quantity is set to. If quantity=2, add 2 items with price = price/2
                                     for _ in 0..<quantity! {
-                                        items.append(Item(name: currentBlock.paragraphs[i][k], price: priceToAdd, itemID: String(counter)))
+                                        items.append(Item(name: concatItemName, price: priceToAdd, itemID: String(counter)))
                                         counter += 1
                                     }
                                     
                                     //if no quantities are listed on receipt, just add it
+                                    
+                                }
+                                nextPriceIndexToAdd += 1
                                 
+                                quantity = nextQuantity
+                                concatItemName = currentItemName
+                                nextQuantityFound = false
                             }
-                            nextPriceIndexToAdd += 1
-                        }
 
+                        }
                         
                         
                     //if no quantity found, add items one line at a time normally
@@ -234,6 +266,32 @@ class ScanViewController: UIViewController {
                     }
                 }
             }
+        }
+        
+        //Add last item since loop ends before last item is added bc items are added once the next new item is found so since there's no next item for the last, loop exits without adding
+        if anyQuantityFound == true {
+            
+            //make sure prices index is in scope, if not, exit
+            if nextPriceIndexToAdd < prices.count {
+                //if item is not free (discard/skip if it is), assign price to item
+                if prices[nextPriceIndexToAdd] != 0.0 {
+                    
+                    //Calculate unit price depending on quantity count
+                    let priceToAdd = prices[nextPriceIndexToAdd]/Double(quantity!)
+                    
+                    //Add as many items as quantity is set to. If quantity=2, add 2 items with price = price/2
+                    for _ in 0..<quantity! {
+                        items.append(Item(name: concatItemName, price: priceToAdd, itemID: String(counter)))
+                        counter += 1
+                    }
+                }
+                nextPriceIndexToAdd += 1
+                
+                quantity = nextQuantity
+                concatItemName = currentItemName
+                nextQuantityFound = false
+            }
+
         }
         
         //if all data seems complete (i.e. items.count = prices.count, sum(prices) = total, etc.)

@@ -44,8 +44,7 @@ class GuestsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource, It
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemGuestsCell", for: indexPath) as! ItemGuestsTableViewCell
-        
-                
+
         
         //cell.guestName.text = guests[indexPath.row].name //"Brandon Taleisnik"
         cell.guestPic.image = guests[indexPath.row].profPicImage
@@ -91,7 +90,6 @@ class GuestsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource, It
             print((currentItem?.price)!)
             print((currentItem?.isAssigned)!)
         }
-        
 
         
     
