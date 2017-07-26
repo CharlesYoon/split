@@ -107,8 +107,6 @@ class ScanViewController: UIViewController {
         var counter: Int = 0
         
         for i in 0..<currentBlock.paragraphs.count {
-            //print(currentBlock.paragraphs[i])
-            
             //for every line in paragraph, add price element if can be converted to double (i.e. a price)
             for k in 0..<currentBlock.paragraphs[i].count {
                 if let priceDouble = currentBlock.paragraphs[i][k].doubleValue {
@@ -140,6 +138,68 @@ class ScanViewController: UIViewController {
                         
 
                     }
+                    
+                    //make all lowercase to search for total keyword
+                    let lowerString = currentBlock.paragraphs[i][k].lowercased()
+                    
+                    //check if keyword 'total' or 'balance' exists in string, if so, look for double
+                    if (lowerString.range(of: "total") != nil) || (lowerString.range(of: "balance") != nil) {
+                    
+                        var rangeStart: Int?
+                        var rangeStop: Int?
+                        var value: String = ""
+                        
+                        //iterate through string looking for integers, and try to find the price Double
+                        for n in 0..<lowerString.characters.count {
+                            
+                            //if found an integer, add to value
+                            if String(lowerString[n]).isInt {
+                                
+                                //if rangeStart is nil, then it's the start of a range
+                                if rangeStart == nil {
+                                    rangeStart = n
+                                }
+                                
+                                value.append(lowerString[n])
+                                
+                            //if a . is found after an integer, add it because likely a decimal
+                            } else if (String(lowerString[n]) == ".") && rangeStart != nil {
+                                value.append(lowerString[n])
+                                
+                            //if non-int is found once rangeStart has been assigned, likely end of price
+                            } else if rangeStart != nil {
+                                rangeStop = n-1
+                            }
+                        }
+                        
+                        //if more than one decimal exists in value, likely a comma for $1,000 so delete first occurence and leave 2nd decimal for cents
+                        let numDecimals = value.components(separatedBy: ".")
+                        if (numDecimals.count-1 ) > 1 {
+                            for n in 0..<value.characters.count {
+                                if value[n] == "." {
+                                    
+                                    //remove first decimal occurrence 
+                                    let start = value.index(value.startIndex, offsetBy: n)
+                                    let end = value.index(value.startIndex, offsetBy: n+1)
+                                    let range = start..<end
+                                    value = value.replacingCharacters(in: Range(range), with: "")
+                                    
+                                    //once first decimal is found, exit loop
+                                    break
+                                }
+                            }
+                        }
+                        
+                        //add value to prices[] if it's a double
+                        if let priceDouble = value.doubleValue {
+                            prices.append(priceDouble)
+                            foundDouble = true
+                            sender.backgroundColor = UIColor(red: 84/255, green: 136/255, blue: 138/255, alpha: 0.5)
+                        }
+                        
+                    }
+                    
+                    
                     
                 }
             }
