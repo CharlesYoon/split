@@ -109,31 +109,51 @@ class ScanViewController: UIViewController {
         for i in 0..<currentBlock.paragraphs.count {
             //for every line in paragraph, add price element if can be converted to double (i.e. a price)
             for k in 0..<currentBlock.paragraphs[i].count {
+                
+                var p: String = currentBlock.paragraphs[i][k].lowercased()
+                
+                //check if string can be converted to double, likely price
                 if let priceDouble = currentBlock.paragraphs[i][k].doubleValue {
                     prices.append(priceDouble)
                     foundDouble = true
                     //sender.layer.borderColor = UIColor.cyan.cgColor
                     sender.backgroundColor = UIColor(red: 84/255, green: 136/255, blue: 138/255, alpha: 0.5)
+                
+                //Check if a price of 0.00 is converting the 0's wrong; maybe o's not 0's
+                } else if p == "o.oo" || p == "o.00" || p == "0.oo" {
                     
-                //check if first letter is R (for Rand), and if so, try to remove then convert to double. If success, add price, otherwise add R back and continue
+                    //add 0.00 to prices
+                    prices.append(0.00)
+                    foundDouble = true
+                    //sender.layer.borderColor = UIColor.cyan.cgColor
+                    sender.backgroundColor = UIColor(red: 84/255, green: 136/255, blue: 138/255, alpha: 0.5)
+                    
+                //check if first letter is R (for Rand) or $, and if so, try to remove then convert to double. If success, add price, otherwise add R back and continue
                 } else {
                     //If first character is R (for rand), try to remove then convert to double.
                     let firstChar = currentBlock.paragraphs[i][k][0]
-                    if firstChar == "R" {
+                    if firstChar == "R" || firstChar == "$" {
                         
                         //remove R character from string
-                        currentBlock.paragraphs[i][k].remove(at: currentItemName.startIndex) //remove quantity
+                        p.remove(at: p.startIndex) //remove quantity
                         
                         //try to convert new string to double, add as price if successful
-                        if let priceDouble = currentBlock.paragraphs[i][k].doubleValue {
+                        if let priceDouble = p.doubleValue {
                             prices.append(priceDouble)
                             foundDouble = true
                             //sender.layer.borderColor = UIColor.cyan.cgColor
                             sender.backgroundColor = UIColor(red: 84/255, green: 136/255, blue: 138/255, alpha: 0.5)
                             
-                        //if fails, then must not be a price, so add letter back in and continue
-                        } else {
-                            currentBlock.paragraphs[i][k].insert(firstChar, at: currentBlock.paragraphs[i][k].startIndex)
+                        //Check if a price of 0.00 is converting the 0's wrong; maybe o's not 0's
+                        } else if p == "o.oo" || p == "o.00" || p == "0.oo" {
+
+                                //add 0.00 to prices
+                                prices.append(0.00)
+                                foundDouble = true
+                                //sender.layer.borderColor = UIColor.cyan.cgColor
+                                sender.backgroundColor = UIColor(red: 84/255, green: 136/255, blue: 138/255, alpha: 0.5)
+                            
+                        //if fails, then must not be a price, so continue
                         }
                         
 
@@ -178,7 +198,7 @@ class ScanViewController: UIViewController {
                             for n in 0..<value.characters.count {
                                 if value[n] == "." {
                                     
-                                    //remove first decimal occurrence 
+                                    //remove first decimal occurrence
                                     let start = value.index(value.startIndex, offsetBy: n)
                                     let end = value.index(value.startIndex, offsetBy: n+1)
                                     let range = start..<end
@@ -276,27 +296,50 @@ class ScanViewController: UIViewController {
                                 
                                 nextQuantityFound = true
                                 
-                                nextQuantity = Int(firstChar)!
+                                var n: Int = 0
+                                var quantNum: String = ""
                                 
-                                //remove quantity character and space from string
-                                currentItemName.remove(at: currentItemName.startIndex) //remove quantity
-                                currentItemName.remove(at: currentItemName.startIndex) //remove space
+                                //continue until find last num in quantity (i.e. if quantity is 12, it would append both the 1 and 2.
+                                while String(currentItemName[n]).isInt {
+                                    quantNum.append(currentItemName[n])
+                                    n += 1
+                                }
                                 
+                                
+                                nextQuantity = Int(quantNum)!
+                                
+                                for _ in 0...n {
+                            
+                                    //remove all quantity nums + 1 more for the space after
+                                    currentItemName.remove(at: currentItemName.startIndex)
+                                }
                                 
 
                             //concatItemName string is empty, so add start new Item string
                             } else {
-                                quantity = Int(firstChar)!
+                                
+                                var n: Int = 0
+                                var quantNum: String = ""
+                                
+                                //continue until find last num in quantity (i.e. if quantity is 12, it would append both the 1 and 2.
+                                while String(currentItemName[n]).isInt {
+                                    quantNum.append(currentItemName[n])
+                                    n += 1
+                                }
+                                
+                                quantity = Int(quantNum)!
+                                
+                                for _ in 0...n {
+                             
+                                    //remove all quantity nums + 1 more for the space after
+                                    currentItemName.remove(at: currentItemName.startIndex)
+                                }
                                 
                                 // Integer found means start of new item so clear concat string
                                 concatItemName = ""
                                 
                                 //If quantity is first char, start of new item, so reset nextQuantityFound
                                 nextQuantityFound = false
-                                
-                                //remove quantity character and space from string
-                                currentItemName.remove(at: currentItemName.startIndex) //remove quantity
-                                currentItemName.remove(at: currentItemName.startIndex) //remove space
                                 
                                 
                                 concatItemName = currentItemName
@@ -386,9 +429,12 @@ class ScanViewController: UIViewController {
                 }
                 nextPriceIndexToAdd += 1
                 
-                quantity = nextQuantity
-                concatItemName = currentItemName
+                //reset variables for next block
+                quantity = 0
+                concatItemName = ""
                 nextQuantityFound = false
+                anyQuantityFound = nil
+                nextQuantity = nil
             }
 
         }
