@@ -163,10 +163,9 @@ class ScanViewController: UIViewController {
                     let lowerString = currentBlock.paragraphs[i][k].lowercased()
                     
                     //check if keyword 'total' or 'balance' exists in string, if so, look for double
-                    if (lowerString.range(of: "total") != nil) || (lowerString.range(of: "balance") != nil) {
+                    if (lowerString.range(of: "total") != nil) || (lowerString.range(of: "balance") != nil) || (lowerString.range(of: "amount") != nil) || (lowerString.range(of: "due") != nil)  {
                     
                         var rangeStart: Int?
-                        var rangeStop: Int?
                         var value: String = ""
                         
                         //iterate through string looking for integers, and try to find the price Double
@@ -186,9 +185,6 @@ class ScanViewController: UIViewController {
                             } else if (String(lowerString[n]) == ".") && rangeStart != nil {
                                 value.append(lowerString[n])
                                 
-                            //if non-int is found once rangeStart has been assigned, likely end of price
-                            } else if rangeStart != nil {
-                                rangeStop = n-1
                             }
                         }
                         
