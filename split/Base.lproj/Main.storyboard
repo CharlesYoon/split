@@ -801,10 +801,84 @@
                             <outlet property="delegate" destination="we1-iq-cKZ" id="17z-4S-sgF"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Payment" id="Bp7-lQ-GGM">
+                        <barButtonItem key="rightBarButtonItem" title="Add Tip" id="KXb-Hc-Uv8">
+                            <connections>
+                                <segue destination="toC-hH-xzi" kind="presentation" identifier="navToTip" id="u6a-Hb-1QS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fe2-15-5o3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5631.1999999999998" y="-605.84707646176912"/>
+        </scene>
+        <!--Add Tip View Controller-->
+        <scene sceneID="qDp-xo-GwK">
+            <objects>
+                <viewController id="toC-hH-xzi" customClass="AddTipViewController" customModule="split" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FJx-QZ-z5A"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fc5-Dq-AUc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d91-nd-y1C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Tip %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clf-Ka-K0R">
+                                <rect key="frame" x="122" y="295" width="130" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="O5Y-TB-daa"/>
+                                    <constraint firstAttribute="width" constant="130" id="gi9-KY-eGd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ol1-bI-HFG">
+                                <rect key="frame" x="138" y="340" width="98" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="BVF-kR-whs"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7a-Fz-UnB">
+                                <rect key="frame" x="117" y="567" width="141" height="53"/>
+                                <color key="backgroundColor" red="0.1333333333" green="0.1176470588" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="141" id="PyH-Il-7Gb"/>
+                                    <constraint firstAttribute="height" constant="53" id="q0l-D7-bPo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="DONE">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.80784313730000001" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButton:" destination="toC-hH-xzi" eventType="touchUpInside" id="f42-Ih-mR3"/>
+                                    <action selector="scanImageButtonTapped:" destination="EAq-9J-EII" eventType="touchUpInside" id="Ppf-Af-R5w"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="clf-Ka-K0R" firstAttribute="centerX" secondItem="ol1-bI-HFG" secondAttribute="centerX" id="DKv-Fn-Bxj"/>
+                            <constraint firstItem="clf-Ka-K0R" firstAttribute="centerX" secondItem="d91-nd-y1C" secondAttribute="centerX" id="Jjf-fz-DPP"/>
+                            <constraint firstItem="ol1-bI-HFG" firstAttribute="centerX" secondItem="t7a-Fz-UnB" secondAttribute="centerX" id="P9N-Fz-VhX"/>
+                            <constraint firstItem="clf-Ka-K0R" firstAttribute="top" secondItem="FJx-QZ-z5A" secondAttribute="bottom" constant="275" id="Xgz-Ax-imt"/>
+                            <constraint firstItem="ol1-bI-HFG" firstAttribute="top" secondItem="clf-Ka-K0R" secondAttribute="bottom" constant="7" id="aiR-hy-hhh"/>
+                            <constraint firstItem="Fc5-Dq-AUc" firstAttribute="top" secondItem="t7a-Fz-UnB" secondAttribute="bottom" constant="47" id="cym-5G-I2w"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tipLabel" destination="clf-Ka-K0R" id="OU7-TK-wdc"/>
+                        <outlet property="tipTextField" destination="ol1-bI-HFG" id="hMt-Dn-ck5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L4C-u2-yl6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6548" y="-606.74662668665667"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fSV-D2-5Lg">
