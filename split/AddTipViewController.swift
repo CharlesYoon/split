@@ -29,28 +29,32 @@ class AddTipViewController: UIViewController {
     
     @IBAction func doneButton(_ sender: Any) {
         
-        if ((tipTextField.text?.isInt) != nil) {
+        if ((tipTextField.text?.isInt) == true) {
             let tip: Double = Double(tipTextField.text!)! / 100.0
             delegate?.didAddTip(tip: tip)
             
             dismiss(animated: true, completion: nil)
             
         } else {
-            _ = UIAlertAction(title: "Must enter valid number", style: .default, handler: { (action) -> Void in
             
-            })
+            let alertController = UIAlertController(
+                title: "Invalid Input",
+                message: "Please enter integer between 1-100",
+                preferredStyle: UIAlertControllerStyle.alert
+            )
+            
+            
+            let confirmAction = UIAlertAction(
+            title: "OK", style: UIAlertActionStyle.default) { (action) in
+                // ...
+            }
+            
+            alertController.addAction(confirmAction)
+            
+            present(alertController, animated: true, completion: nil)
             
             
         }
-        
-//        guard let checkXCoord = x.1["x"].rawValue as? NSNumber else {
-//            _ = UIAlertAction(title: "Error, please rescan", style: .default, handler: { (action) -> Void in
-//                
-//                self.didClickRescan()
-//            })
-//            
-//            return
-//        }
 
 
         
